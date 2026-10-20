@@ -32,7 +32,7 @@ const FLOATERS = [
   { src: "/images/i1.webp", pos: "left-[2%] top-[4%]", size: 48, delay: "0s" },
   { src: "/images/i2.webp", pos: "right-[2%] top-[8%]", size: 44, delay: "1s" },
   { src: "/images/i3.webp", pos: "right-[-4%] top-[42%]", size: 38, delay: "2s" },
-  { src: "/images/i4.webp", pos: "left-[-4%] top-[58%]", size: 34, delay: "3s" },
+  { src: "/images/33.png", pos: "left-[-4%] top-[58%]", size: 34, delay: "3s" },
 ];
 
 /* ---------- Shared pieces ---------- */
