@@ -69,7 +69,7 @@ function Reveal({ children, className = "", delay = 0, variant = "up" }: { child
 
 function AppleIcon({ className = "" }: { className?: string }) {
   return (
-    <svg viewBox="0 0 24 24" aria-hidden className={className} fill="currentColor">
+    <svg viewBox="0 0 24 24" aria-hidden="true" className={className} fill="currentColor">
       <path d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701" />
     </svg>
   );
@@ -77,7 +77,7 @@ function AppleIcon({ className = "" }: { className?: string }) {
 
 function PlayIcon({ className = "" }: { className?: string }) {
   return (
-    <svg viewBox="0 0 24 24" aria-hidden className={className}>
+    <svg viewBox="0 0 24 24" aria-hidden="true" className={className}>
       <path fill="#00A0FF" d="M3.6 1.8 13.8 12 3.6 22.2c-.4-.2-.6-.6-.6-1.1V2.9c0-.5.2-.9.6-1.1z" />
       <path fill="#00E676" d="M17.2 8.6 13.8 12 3.6 1.8c.2-.1.5-.2.8-.1l12.8 6.9z" />
       <path fill="#FFD500" d="M20.6 10.5c.7.4.7 1.6 0 2l-3.4 1.9L13.8 12l3.4-3.4 3.4 1.9z" />
@@ -118,8 +118,7 @@ function StoreBadges({ size = "md", center = true }: { size?: "sm" | "md"; cente
 function Hero() {
   return (
     <section id="home" className="relative overflow-hidden bg-gradient-to-b from-white via-white to-[#87d8e2]">
-      <div aria-hidden className="grid-lines pointer-events-none absolute inset-0 [mask-image:radial-gradient(ellipse_at_50%_35%,#000_30%,transparent_75%)]" />
-
+      <div aria-hidden="true" className="grid-lines pointer-events-none absolute inset-0 [mask-image:radial-gradient(ellipse_at_50%_35%,#000_30%,transparent_75%)]" />
 
       <div className="relative mx-auto max-w-3xl px-6 pt-14 text-center sm:pt-20">
         <h1 className="rise mx-auto max-w-2xl px-4 text-center text-[clamp(1.5rem,3.5vw,2.5rem)] font-semibold leading-tight tracking-tight text-[#242033]">
@@ -154,240 +153,46 @@ function Features() {
       <div className="flex flex-col gap-8 md:flex-row md:items-end md:justify-between">
         <Reveal>
           <p className="max-w-sm text-sm leading-relaxed text-black/65 sm:text-base">
-            One call can start a great connection! Discover new voices, meet like-minded people, and jump into lively conversations. Your next favorite conversation is just a call away.
+            One call can start a great connection!
           </p>
         </Reveal>
-        <Reveal delay={120} className="flex items-center gap-4 md:gap-6">
-          <span aria-hidden className="nudge grid h-9 w-9 shrink-0 place-items-center rounded-full bg-[#0b0a1f] text-white">
-            <ArrowDown size={15} />
-          </span>
-          <h2 className="text-[clamp(2rem,5vw,3.25rem)] font-normal leading-[1.05]">
-            Real conversations, <br className="hidden sm:block" /> genuine connections
-          </h2>
-        </Reveal>
       </div>
 
-      <ul className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-        {FEATURES.map((f, i) => (
-          <li key={f.title} className={i === 2 ? "sm:col-span-2 sm:mx-auto sm:w-[calc(50%-0.625rem)] lg:col-span-1 lg:mx-0 lg:w-auto" : ""}>
-            <Reveal delay={i * 120} variant="zoom" className="h-full">
-              <article className="group flex h-full flex-col overflow-hidden rounded-3xl bg-white shadow-sm ring-1 ring-black/5 transition duration-500 hover:-translate-y-2 hover:shadow-2xl">
-                {/* Screenshot on top: nothing is drawn over it */}
-                <div className={`relative aspect-[4/5] overflow-hidden ${f.bg}`}>
-                  <Image
-                    src={f.image}
-                    alt={f.alt}
-                    fill
-                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                    className="object-cover object-top transition-transform duration-700 group-hover:scale-105"
-                  />
-                </div>
-                {/* Caption below */}
-                <div className="flex items-start gap-3 p-5">
-                  <span aria-hidden className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-[#0b0a1f] text-white transition-transform duration-500 group-hover:rotate-12 group-hover:scale-110">
-                    <f.icon size={16} />
-                  </span>
-                  <div>
-                    <h3 className="text-base font-semibold sm:text-lg">{f.title}</h3>
-                    {/* <p className="mt-1 text-sm leading-relaxed text-black/60">{f.text}</p> */}
-                  </div>
-                </div>
-              </article>
+      <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {FEATURES.map((item, index) => {
+          const Icon = item.icon;
+          return (
+            <Reveal key={item.title} delay={index * 100} className="flex flex-col items-center text-center">
+              <div className={`w-full aspect-[4/5] rounded-3xl relative overflow-hidden flex items-end justify-center p-6 ${item.bg}`}>
+                <Image 
+                  src={item.image} 
+                  alt={item.alt} 
+                  fill 
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  className="object-cover"
+                />
+              </div>
+              <div className="mt-4 flex items-center gap-2 justify-center">
+                <Icon className="h-5 w-5 text-[#16b5ca]" />
+                <h3 className="font-medium text-lg text-[#242033]">{item.title}</h3>
+              </div>
             </Reveal>
-          </li>
-        ))}
-      </ul>
-    </section>
-  );
-}
-
-function StepCard({ step, delay }: { step: Step; delay: number }) {
-  return (
-    <li>
-      <Reveal delay={delay}>
-        <div className="rounded-2xl bg-[#f1eefb] p-4 transition duration-300 hover:-translate-y-1 hover:bg-[#e6e0fa] hover:shadow-lg">
-          <div className="flex items-start justify-between gap-3">
-            <h3 className="text-sm font-semibold">{step.title}</h3>
-            <span className="text-xs text-black/50">{step.n}</span>
-          </div>
-          <p className="mt-2 text-xs leading-relaxed text-black/60">{step.text}</p>
-        </div>
-      </Reveal>
-    </li>
-  );
-}
-
-
-function Steps() {
-  return (
-    <section
-      id="steps"
-      className="mx-auto max-w-6xl px-4 pb-16 sm:px-6 sm:pb-24"
-    >
-      <div className="grid gap-6 lg:grid-cols-2 lg:gap-10">
-        <Reveal>
-          <h2 className="max-w-md text-[clamp(1.75rem,4vw,2.75rem)] font-normal leading-[1.1]">
-            Simple Steps to Start Talking
-          </h2>
-        </Reveal>
-
-        <Reveal
-          delay={120}
-          className="max-w-xs text-xs leading-relaxed text-black/60 sm:text-sm lg:ml-auto"
-        >
-          Discover how easy it is to meet new people on Gaby Talk.
-          Create your profile, pick your interests, and join a
-          conversation in minutes.
-        </Reveal>
-      </div>
-
-      <div className="mt-10 grid items-center gap-8 lg:grid-cols-[1fr_auto_1fr]">
-        {/* Left side: Steps 01 and 02 */}
-        <ol className="order-2 grid gap-3 sm:grid-cols-2 lg:order-1 lg:grid-cols-1">
-          {[STEPS[0], STEPS[1]].map((s, i) => (
-            <StepCard
-              key={s.n}
-              step={s}
-              delay={i * 150}
-            />
-          ))}
-        </ol>
-
-        {/* Center image */}
-        <Reveal
-          variant="zoom"
-          className="order-1 mx-auto w-[min(55vw,240px)] lg:order-2"
-        >
-          <Image
-            src="/images/step-img.png"
-            alt="Gaby Talk app home screen"
-            width={600}
-            height={1240}
-            sizes="240px"
-            className="float-slow h-auto w-full"
-          />
-        </Reveal>
-
-        {/* Right side: Steps 03 and 04 */}
-        <div className="order-3 flex flex-col gap-6">
-          <ol className="grid gap-3 sm:grid-cols-2 lg:grid-cols-1">
-            {[STEPS[2], STEPS[3]].map((s, i) => (
-              <StepCard
-                key={s.n}
-                step={s}
-                delay={i * 150 + 300}
-              />
-            ))}
-          </ol>
-
-          <Reveal delay={450} className="max-w-xs text-xs text-black/60 sm:text-sm">
-            Start conversations with people who share your interests.
-
-            <a
-              href="#download"
-              className="mt-3 block w-fit rounded-full bg-[#0b0a1f] px-5 py-2 text-xs font-semibold text-white transition duration-300 hover:-translate-y-0.5 hover:bg-[#2e8eb1]"
-            >
-              Download App
-            </a>
-          </Reveal>
-        </div>
+          );
+        })}
       </div>
     </section>
   );
 }
 
-
-
-
-
-
-
-function Testimonials() {
-  const [i, setI] = useState(0);
-  const prev = () => setI((v) => (v - 1 + REVIEWS.length) % REVIEWS.length);
-  const next = () => setI((v) => (v + 1) % REVIEWS.length);
-  return (
-    <section id="testimonials" className="mx-auto max-w-6xl px-4 pb-16 sm:px-6 sm:pb-24">
-      <Reveal>
-        <div className="grid gap-8 rounded-3xl bg-[#e6efb3] p-6 sm:p-10 lg:grid-cols-[1fr_1.6fr] lg:items-center">
-          <div>
-            <h2 className="max-w-xs text-[clamp(1.5rem,3.4vw,2.25rem)] font-normal leading-tight">Customer reviews and feedback from real users.</h2>
-            <div className="mt-6 flex gap-2">
-              <button type="button" onClick={prev} aria-label="Previous review" className="grid h-10 w-10 place-items-center rounded-full bg-white transition duration-300 hover:scale-110 hover:bg-[#0b0a1f] hover:text-white">
-                <ArrowLeft size={15} />
-              </button>
-              <button type="button" onClick={next} aria-label="Next review" className="grid h-10 w-10 place-items-center rounded-full bg-white transition duration-300 hover:scale-110 hover:bg-[#0b0a1f] hover:text-white">
-                <ArrowRight size={15} />
-              </button>
-            </div>
-          </div>
-          <div className="grid gap-4 sm:grid-cols-2" aria-live="polite">
-            {[0, 1].map((k) => {
-              const r = REVIEWS[(i + k) % REVIEWS.length];
-              return (
-                <figure key={`${i}-${k}`} className={`swap rounded-2xl bg-white p-5 transition-shadow hover:shadow-lg ${k === 1 ? "hidden sm:block" : ""}`} style={delayStyle(k * 100)}>
-                  <figcaption className="flex items-center gap-3">
-                    <Image src={r.avatar} alt="" width={40} height={40} className="rounded-full" />
-                    <div>
-                      <p className="text-sm font-semibold">{r.name}</p>
-                      <div className="flex text-amber-400" role="img" aria-label="5 out of 5 stars">
-                        {Array.from({ length: 5 }).map((_, s) => (
-                          <Star key={s} size={12} fill="currentColor" />
-                        ))}
-                      </div>
-                    </div>
-                  </figcaption>
-                  <blockquote className="mt-4 text-xs leading-relaxed text-black/60 sm:text-[13px]">{r.text}</blockquote>
-                </figure>
-              );
-            })}
-          </div>
-        </div>
-      </Reveal>
-    </section>
-  );
-}
-
-function DownloadBanner() {
-  return (
-    <section id="download" className="mx-auto max-w-6xl px-4 pb-16 sm:px-6 sm:pb-24">
-      <Reveal>
-        <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-[#f0f4ff] via-[#dce7ff] to-[#b8ccff] md:min-h-[420px]">          <div className="relative z-10 p-6 sm:p-10 md:max-w-[55%] md:py-14">
-          <p className="text-xs sm:text-sm">Ready to Start Talking?</p>
-          <h2 className="mt-6 flex items-center gap-3 text-[clamp(2rem,5vw,3.25rem)] font-medium leading-[1.05]">
-            <span>
-              Download <br /> Mobile App
-            </span>
-
-          </h2>
-          <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center">
-            <StoreBadges size="sm" center={false} />
-            <p className="max-w-[11rem] text-xs text-black/60">Download now &amp; start real conversations today!</p>
-          </div>
-        </div>
-
-          <div className="relative h-72 sm:h-80 md:absolute md:inset-y-0 md:right-0 md:h-auto md:w-[52%]">
-            <Reveal variant="right" delay={200} className="absolute inset-0">
-              <Image src="/images/phone-hand (1).png" alt="Hand holding a phone with the Koode app" fill sizes="(max-width: 768px) 100vw, 52vw" className="object-contain object-bottom md:object-right-bottom" />
-            </Reveal>
-          </div>
-        </div>
-      </Reveal>
-    </section>
-  );
-}
-
-/* ---------- Page ---------- */
+/* ---------- Main Page Render ---------- */
 
 export default function Page() {
   return (
-    <main className="overflow-x-clip bg-white text-[#0b0a1f]">
+    <main className="min-h-screen bg-white">
       <Hero />
       <Features />
-      <Steps />
-      <Testimonials />
-      <DownloadBanner />
     </main>
   );
 }
+
 
