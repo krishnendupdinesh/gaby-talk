@@ -27,8 +27,8 @@ const COLUMNS = [
   {
     title: "Legal",
     links: [
-      { label: "Privacy", href: "/privacy" }, // TODO real route
-      { label: "Terms", href: "/terms" }, // TODO real route
+      { label: "Privacy", href: "/privacy-policy" }, // TODO real route
+      { label: "Terms", href: "/terms&condition" }, // TODO real route
       { label: "Contact", href: "/contact" }, // TODO real route
     ],
   },

@@ -217,36 +217,76 @@ function StepCard({ step, delay }: { step: Step; delay: number }) {
   );
 }
 
+
 function Steps() {
   return (
-    <section id="steps" className="mx-auto max-w-6xl px-4 pb-16 sm:px-6 sm:pb-24">
+    <section
+      id="steps"
+      className="mx-auto max-w-6xl px-4 pb-16 sm:px-6 sm:pb-24"
+    >
       <div className="grid gap-6 lg:grid-cols-2 lg:gap-10">
         <Reveal>
-          <h2 className="max-w-md text-[clamp(1.75rem,4vw,2.75rem)] font-normal leading-[1.1]">Simple Steps to Start Talking</h2>
+          <h2 className="max-w-md text-[clamp(1.75rem,4vw,2.75rem)] font-normal leading-[1.1]">
+            Simple Steps to Start Talking
+          </h2>
         </Reveal>
-        <Reveal delay={120} className="max-w-xs text-xs leading-relaxed text-black/60 sm:text-sm lg:ml-auto">
-          Discover how easy it is to meet new people on Gaby Talk. Create your profile, pick your interests, and join a conversation in minutes.
+
+        <Reveal
+          delay={120}
+          className="max-w-xs text-xs leading-relaxed text-black/60 sm:text-sm lg:ml-auto"
+        >
+          Discover how easy it is to meet new people on Gaby Talk.
+          Create your profile, pick your interests, and join a
+          conversation in minutes.
         </Reveal>
       </div>
 
       <div className="mt-10 grid items-center gap-8 lg:grid-cols-[1fr_auto_1fr]">
+        {/* Left side: Steps 01 and 02 */}
         <ol className="order-2 grid gap-3 sm:grid-cols-2 lg:order-1 lg:grid-cols-1">
-          {[STEPS[1], STEPS[3]].map((s, i) => (
-            <StepCard key={s.n} step={s} delay={i * 150 + 150} />
+          {[STEPS[0], STEPS[1]].map((s, i) => (
+            <StepCard
+              key={s.n}
+              step={s}
+              delay={i * 150}
+            />
           ))}
         </ol>
-        <Reveal variant="zoom" className="order-1 mx-auto w-[min(55vw,240px)] lg:order-2">
-          <Image src="/images/step-img.png" alt="Koode app home screen" width={600} height={1240} sizes="240px" className="float-slow h-auto w-full" />
+
+        {/* Center image */}
+        <Reveal
+          variant="zoom"
+          className="order-1 mx-auto w-[min(55vw,240px)] lg:order-2"
+        >
+          <Image
+            src="/images/step-img.png"
+            alt="Gaby Talk app home screen"
+            width={600}
+            height={1240}
+            sizes="240px"
+            className="float-slow h-auto w-full"
+          />
         </Reveal>
+
+        {/* Right side: Steps 03 and 04 */}
         <div className="order-3 flex flex-col gap-6">
           <ol className="grid gap-3 sm:grid-cols-2 lg:grid-cols-1">
-            {[STEPS[0], STEPS[2]].map((s, i) => (
-              <StepCard key={s.n} step={s} delay={i * 150} />
+            {[STEPS[2], STEPS[3]].map((s, i) => (
+              <StepCard
+                key={s.n}
+                step={s}
+                delay={i * 150 + 300}
+              />
             ))}
           </ol>
-          <Reveal delay={300} className="max-w-xs text-xs text-black/60 sm:text-sm">
+
+          <Reveal delay={450} className="max-w-xs text-xs text-black/60 sm:text-sm">
             Start conversations with people who share your interests.
-            <a href="#download" className="mt-3 block w-fit rounded-full bg-[#0b0a1f] px-5 py-2 text-xs font-semibold text-white transition duration-300 hover:-translate-y-0.5 hover:bg-[#2e8eb1]">
+
+            <a
+              href="#download"
+              className="mt-3 block w-fit rounded-full bg-[#0b0a1f] px-5 py-2 text-xs font-semibold text-white transition duration-300 hover:-translate-y-0.5 hover:bg-[#2e8eb1]"
+            >
               Download App
             </a>
           </Reveal>
@@ -269,7 +309,7 @@ function Testimonials() {
   return (
     <section id="testimonials" className="mx-auto max-w-6xl px-4 pb-16 sm:px-6 sm:pb-24">
       <Reveal>
-        <div className="grid gap-8 rounded-3xl bg-[#ecebf3] p-6 sm:p-10 lg:grid-cols-[1fr_1.6fr] lg:items-center">
+        <div className="grid gap-8 rounded-3xl bg-[#e6efb3] p-6 sm:p-10 lg:grid-cols-[1fr_1.6fr] lg:items-center">
           <div>
             <h2 className="max-w-xs text-[clamp(1.5rem,3.4vw,2.25rem)] font-normal leading-tight">Customer reviews and feedback from real users.</h2>
             <div className="mt-6 flex gap-2">
